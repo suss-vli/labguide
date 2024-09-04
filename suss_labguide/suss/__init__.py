@@ -1,5 +1,5 @@
 from suss.dev import x
-from learntools.core.richtext import *
+from suss_labguide.learntools.core.richtext import *
 from IPython import get_ipython
 import ipynbname
 import os
