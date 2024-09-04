@@ -6,7 +6,6 @@ authors = ["Bryan Lim <bryanlimyt@suss.edu.sg>, Jane Tan <janetanjy@suss.edu.sg>
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "suss_labguide.cli" },
     { include = "suss_labguide.suss" },
     { include = "suss_labguide.learntools" }
 ]
