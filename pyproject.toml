@@ -8,9 +8,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.8"
+typer = "^1.0.0"
 
 [tool.poetry.scripts]
-setup_course = "suss_labguide.scripts.setup:setup_course"
+labguide = "scripts.labguide:app"
 
 [build-system]
 requires = ["poetry-core"]
