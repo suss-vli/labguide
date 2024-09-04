@@ -11,8 +11,8 @@ packages = [
     { include = "src.learntools" }
 ]
 include = [
-    { path = "lab0/*", format = "directory" },
-    { path = "scripts/*", format = "directory" }
+    "lab0/*",
+    "scripts/*",
 ]
 
 [tool.poetry.dependencies]
