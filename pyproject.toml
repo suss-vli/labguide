@@ -5,22 +5,20 @@ description = "Package that powers interactive, autogradable labguides"
 authors = ["Bryan Lim <bryanlimyt@suss.edu.sg>, Jane Tan <janetanjy@suss.edu.sg>"]
 license = "MIT"
 readme = "README.md"
+packages = [
+    { include = "lab0" },
+    { include = "scripts" },
+    { include = "src.cli" },
+    { include = "src.suss" },
+    { include = "src.learntools" }
+]
 
 [tool.poetry.dependencies]
 python = ">=3.8"
 typer = "^0.9.0"
 
-[tool.poetry.packages]
-include = [
-    { include = "lab0", from = "." },
-    { include = "scripts", from = "." },
-    { include = "cli", from = "suss_labguide" },
-    { include = "suss", from = "suss_labguide" },
-    { include = "learntools", from = "suss_labguide" }
-]
-
 [tool.poetry.scripts]
-labguide = "suss_labguide.labguide.scripts.labguide:app"
+labguide = "scripts.labguide:app"
 
 [build-system]
 requires = ["poetry-core"]
