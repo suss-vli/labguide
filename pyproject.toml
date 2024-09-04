@@ -12,7 +12,8 @@ packages = [
 ]
 include = [
     "lab0/*",
-    "scripts/*"
+    "scripts/*",
+    "suss_labguide/cli/*"
 ]
 
 [tool.poetry.dependencies]
