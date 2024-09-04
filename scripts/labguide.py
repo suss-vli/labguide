@@ -9,7 +9,7 @@ app = typer.Typer()
 
 def setup():
     # Get the path to the "folder/" in your installed package
-    package_dir = Path(__file__).parent
+    package_dir = Path(__file__).parent.parent
     source_folder = package_dir / "lab0"
 
     # Destination is a new directory in the current working directory
