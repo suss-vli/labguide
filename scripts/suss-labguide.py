@@ -34,7 +34,7 @@ def setup(course: str = None):
         requirements_file = dest_folder / "requirements.txt"
         
         if not dest_folder.exists():
-            destination.mkdir(parents=True, exist_ok=True)
+            dest_folder.mkdir(parents=True, exist_ok=True)
             shutil.copytree(source_folder, dest_folder, dirs_exist_ok=True)
             print(f"LabGuide setup is completed. You can find the labs in `labs/` folder and try lab0.")
             
