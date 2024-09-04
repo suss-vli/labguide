@@ -36,11 +36,11 @@ def setup(course: str = None):
         if not dest_folder.exists():
             dest_folder.mkdir(parents=True, exist_ok=True)
             shutil.copytree(source_folder, dest_folder, dirs_exist_ok=True)
-            print(f"LabGuide setup is completed. You can find the labs in `labs/` folder and try lab0.")
             
             if requirements_file.exists():
                 subprocess.run(["pip", "install", "-r", str(requirements_file)], check=True)
                 print(f"Installed requirements from {requirements_file}.")
+                print(f"LabGuide setup is completed. You can find the labs in `labs/` folder and try lab0.")
             else:
                 print(f"No requirements.txt found in {dest_folder}.")
         else:
