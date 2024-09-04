@@ -32,6 +32,7 @@ def setup():
             if src_item.is_dir():
                 shutil.copytree(src_item, dest_item, dirs_exist_ok=True)
             else:
+                dest_item.parent.mkdir(parents=True, exist_ok=True) 
                 shutil.copy2(src_item, dest_item)
         print(f"Copied {source_folder} to {dest_folder}")
     else:
