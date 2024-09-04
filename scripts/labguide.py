@@ -4,6 +4,7 @@ import typer
 import shutil
 from pathlib import Path
 import subprocess
+import os
 
 app = typer.Typer()
 
@@ -20,15 +21,21 @@ def setup():
     destination.mkdir(exist_ok=True)
 
     # Define the path for the destination folder
-    dest_folder = destination / "folder"
+    dest_folder = destination / "lab0"
 
-    # Copy the entire "folder/" directory into the new directory
+    # Copy the entire "lab0/" directory into the new directory
     if source_folder.exists() and source_folder.is_dir():
-        shutil.copytree(source_folder, dest_folder, dirs_exist_ok=True)
-        print(f"Copied {source_folder} to {dest_folder}")
+        for item in source_folder.glob('*') + source_folder.glob('.*'):
+            dest_item = dest_folder / item.name
+            if item.is_dir():
+                shutil.copytree(item, dest_item, dirs_exist_ok=True)
+            else:
+                shutil.copy2(item, dest_item)
+
+        print(f"LabGuide is setup. You can find lab files in the `labs/` directory and try lab0.")
     else:
         print(f"Source folder {source_folder} does not exist")
-
+        
 @app.command()
 def get(course: str):
     # Define the repository URL (example format)
