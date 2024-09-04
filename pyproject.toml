@@ -6,8 +6,7 @@ authors = ["Bryan Lim <bryanlimyt@suss.edu.sg>, Jane Tan <janetanjy@suss.edu.sg>
 license = "MIT"
 readme = "README.md"
 include = [
-    "lab0/*",
-    "lab0/.*",
+    "lab0/**/*",
     "scripts/*"
 ]
 
