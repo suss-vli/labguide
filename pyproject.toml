@@ -15,7 +15,7 @@ python = ">=3.8"
 typer = "^0.9.0"
 
 [tool.poetry.scripts]
-suss-labguide = "scripts.suss-labguide:app"
+labguide = "scripts.labguide:app"
 
 [build-system]
 requires = ["poetry-core"]
