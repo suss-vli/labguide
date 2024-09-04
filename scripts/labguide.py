@@ -32,6 +32,7 @@ def setup():
             if item.is_dir():
                 shutil.copytree(item, dest_item, dirs_exist_ok=True)
             else:
+                dest_item.parent.mkdir(parents=True, exist_ok=True) 
                 shutil.copy2(item, dest_item)
         print(f"LabGuide is setup. You can find lab files in the `labs/` directory and try lab0.")
     else:
