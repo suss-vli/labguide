@@ -25,13 +25,14 @@ def setup():
 
     # Copy the entire "lab0/" directory into the new directory
     if source_folder.exists() and source_folder.is_dir():
-        for item in source_folder.glob('*') + source_folder.glob('.*'):
+        items_to_copy = list(source_folder.glob('*')) + list(source_folder.glob('.*'))
+        
+        for item in items_to_copy:
             dest_item = dest_folder / item.name
             if item.is_dir():
                 shutil.copytree(item, dest_item, dirs_exist_ok=True)
             else:
                 shutil.copy2(item, dest_item)
-
         print(f"LabGuide is setup. You can find lab files in the `labs/` directory and try lab0.")
     else:
         print(f"Source folder {source_folder} does not exist")
