@@ -1,1 +1,0 @@
-LAB_SUBMODULE_NAME = None

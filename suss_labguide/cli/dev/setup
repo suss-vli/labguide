@@ -1,6 +1,0 @@
-#!/bin/bash
-echo "Running setup..."
-python -m venv venv
-. venv/bin/activate
-pip install -r requirements.txt
-echo "Environment setup via shell script complete."
