@@ -3,14 +3,13 @@
 import typer
 import shutil
 from pathlib import Path
-import subprocess
 import os
+import subprocess
 
 app = typer.Typer()
 
-@app.command()
 def setup():
-    # Get the path to the "folder/" in your installed package
+    # Get the path to the "lab0/" in your installed package
     package_dir = Path(__file__).parent.parent
     source_folder = package_dir / "lab0"
 
@@ -23,21 +22,20 @@ def setup():
     # Define the path for the destination folder
     dest_folder = destination / "lab0"
 
-    # Copy the entire "lab0/" directory into the new directory
+    # Copy the entire "lab0/" directory into the new directory, including hidden files/folders
     if source_folder.exists() and source_folder.is_dir():
-        items_to_copy = list(source_folder.glob('*')) + list(source_folder.glob('.*'))
-        
-        for item in items_to_copy:
-            dest_item = dest_folder / item.name
-            if item.is_dir():
-                shutil.copytree(item, dest_item, dirs_exist_ok=True)
+        for item in os.listdir(source_folder):
+            src_item = source_folder / item
+            dest_item = dest_folder / item
+
+            if src_item.is_dir():
+                shutil.copytree(src_item, dest_item, dirs_exist_ok=True)
             else:
-                dest_item.parent.mkdir(parents=True, exist_ok=True) 
-                shutil.copy2(item, dest_item)
-        print(f"LabGuide is setup. You can find lab files in the `labs/` directory and try lab0.")
+                shutil.copy2(src_item, dest_item)
+        print(f"Copied {source_folder} to {dest_folder}")
     else:
         print(f"Source folder {source_folder} does not exist")
-        
+
 @app.command()
 def get(course: str):
     # Define the repository URL (example format)
