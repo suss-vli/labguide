@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Navigate to the repository directory
+# Uncomment and set the path to your git repository if needed
+# cd /path/to/your/repository
+
+# Check if this is a git repository
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo "This is not a git repository."
+    exit 1
+fi
+
+# Get the last commit date and relative age
+last_commit_date=$(git log -1 --format=%cd --date=local)
+last_commit_relative=$(git log -1 --format=%cd --date=relative)
+
+exit_status=$?
+if [ $exit_status -ne 0 ]; then
+    echo "Failed to get the last commit information."
+    exit $exit_status
+else
+    echo "The last commit was made $last_commit_relative on $last_commit_date."
+fi
+
+# Count unstaged changes
+unstaged_changes=$(git diff --name-only | wc -l | tr -d ' ')
+# Count staged changes
+staged_changes=$(git diff --cached --name-only | wc -l | tr -d ' ')
+
+# Output the results
+if [ "$unstaged_changes" -eq 0 ] && [ "$staged_changes" -eq 0 ]; then
+    echo "There are no uncommitted changes."
+else
+    echo "There are $unstaged_changes unstaged changes and $staged_changes staged changes."
+fi

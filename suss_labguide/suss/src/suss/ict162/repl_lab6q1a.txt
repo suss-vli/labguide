@@ -1,0 +1,319 @@
+janetanjy@SUSSSSTDEPTNB01:/c/Users/janetanjy/Desktop/ilabguide$ python3
+Python 3.8.10 (default, Mar 13 2023, 10:26:41)
+[GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+from abc import ABC, abstractmethod
+class Customer(ABC):
+...     PREVAILING_INTEREST = 0.025
+...     def init(self, custid, name, loan):
+...         self._id = custid
+...         self._name = name
+...         self._loan = loan
+...
+...     @property
+...     def id(self):
+...         return self._id
+...
+...     @property
+...     def name(self):
+...         return self._name
+...
+...     @classmethod
+...     def getInterestRate(cls):
+...         return cls.PREVAILING_INTEREST
+...
+...     @abstractmethod
+...     def getCreditLimit(self):
+...         pass
+...
+...     @abstractmethod
+...     def getInterestOnLoan(self):
+...         pass
+...
+...     @property
+...     def loan(self):
+...         return self._loan
+...
+...     def str(self):
+...         return f'Id: {self._id} Name: {self._name:5} Loan: ${self._loan:5d}'
+...customer
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+NameError: name 'customer' is not defined
+Customer
+<class 'main.Customer'>
+c1 = Customer()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: Can't instantiate abstract class Customer with abstract methods getCreditLimit, getInterestOnLoan
+c1 = Customerc1
+<class 'main.Customer'>
+c1.name
+<property object at 0x7f1b15c12b80>
+c1.repr
+<slot wrapper 'repr' of 'object' objects>
+c1.str_
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: type object 'Customer' has no attribute 'str_'
+c1.str_()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: type object 'Customer' has no attribute 'str_'
+c1.str()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: str() missing 1 required positional argument: 'self'
+c1.str(c1)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+File "<stdin>", line 33, in str
+AttributeError: type object 'Customer' has no attribute '_id'
+c1.loan(c1)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: 'property' object is not callable
+c1.loan
+<property object at 0x7f1b15c12bd0>
+c1.loan.repr
+<method-wrapper 'repr' of property object at 0x7f1b15c12bd0>
+c1.loan.repr()
+'<property object at 0x7f1b15c12bd0>'
+str(c1.loan)
+'<property object at 0x7f1b15c12bd0>'
+str(c1.loanx)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: type object 'Customer' has no attribute 'loanx'
+str(c1.name)
+'<property object at 0x7f1b15c12b80>'
+dir(c1.name)
+['class', 'delattr', 'delete', 'dir', 'doc', 'eq', 'format', 'ge', 'get', 'getattribute', 'gt', 'hash', 'init', 'init_subclass', 'isabstractmethod', 'le', 'lt', 'ne', 'new', 'reduce', 'reduce_ex', 'repr', 'set', 'setattr', 'sizeof', 'str', 'subclasshook', 'deleter', 'fdel', 'fget', 'fset', 'getter', 'setter']
+doc(c1.name)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+NameError: name 'doc' is not defined
+c1.doc
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: type object 'Customer' has no attribute 'doc'
+c1.doc()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: type object 'Customer' has no attribute 'doc'
+c1.doc()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: 'NoneType' object is not callable
+c1.doc
+c1.dir
+<method 'dir' of 'object' objects>
+c1.format
+<method 'format' of 'object' objects>
+dir(c1)
+['PREVAILING_INTEREST', 'abstractmethods', 'class', 'delattr', 'dict', 'dir', 'doc', 'eq', 'format', 'ge', 'getattribute', 'gt', 'hash', 'init', 'init_subclass', 'le', 'lt', 'module', 'ne', 'new', 'reduce', 'reduce_ex', 'repr', 'setattr', 'sizeof', 'slots', 'str', 'subclasshook', 'weakref', '_abc_impl', 'getCreditLimit', 'getInterestOnLoan', 'getInterestRate', 'id', 'loan', 'name']
+exit()
+janetanjy@SUSSSSTDEPTNB01:/c/Users/janetanjy/Desktop/ilabguide$ source ./venv/bin/activate
+(venv) janetanjy@SUSSSSTDEPTNB01:/c/Users/janetanjy/Desktop/ilabguide$ pip3 install ../suss --upgrade
+Processing /c/Users/janetanjy/Desktop/suss
+Installing build dependencies ... done
+Getting requirements to build wheel ... done
+Preparing wheel metadata ... done
+Building wheels for collected packages: suss
+Building wheel for suss (PEP 517) ... done
+Created wheel for suss: filename=suss-0.0.1-py3-none-any.whl size=57921 sha256=52f8fc92b26f6fbc9e86bcbb5b6dedfcd65ad1eb6fdcfeeadd0065fb607a4126
+Stored in directory: /tmp/pip-ephem-wheel-cache-4h_3jgjz/wheels/cd/b9/2e/0a48c3fc6116ea2608e13f77028b1f9874f8a9714b5740f977
+Successfully built suss
+Installing collected packages: suss
+Attempting uninstall: suss
+Found existing installation: suss 0.0.1
+Uninstalling suss-0.0.1:
+Successfully uninstalled suss-0.0.1
+Successfully installed suss-0.0.1
+(venv) janetanjy@SUSSSSTDEPTNB01:/c/Users/janetanjy/Desktop/ilabguide$ pip3 install GitPython
+Collecting GitPython
+Downloading GitPython-3.1.31-py3-none-any.whl (184 kB)
+|████████████████████████████████| 184 kB 15.3 MB/s
+Collecting gitdb<5,>=4.0.1
+Downloading gitdb-4.0.10-py3-none-any.whl (62 kB)
+|████████████████████████████████| 62 kB 2.2 MB/s
+Collecting smmap<6,>=3.0.1
+Downloading smmap-5.0.0-py3-none-any.whl (24 kB)
+Installing collected packages: smmap, gitdb, GitPython
+Successfully installed GitPython-3.1.31 gitdb-4.0.10 smmap-5.0.0
+(venv) janetanjy@SUSSSSTDEPTNB01:/c/Users/janetanjy/Desktop/ilabguide$ pip3 install ../suss --upgrade
+Processing /c/Users/janetanjy/Desktop/suss
+Installing build dependencies ... done
+Getting requirements to build wheel ... done
+Preparing wheel metadata ... done
+Building wheels for collected packages: suss
+Building wheel for suss (PEP 517) ... done
+Created wheel for suss: filename=suss-0.0.1-py3-none-any.whl size=57975 sha256=54e1b11af677c4eb452aee71f5dba7559d8635ef7ed1199a5acbe806c3a85431
+Stored in directory: /tmp/pip-ephem-wheel-cache-5b01dwcq/wheels/cd/b9/2e/0a48c3fc6116ea2608e13f77028b1f9874f8a9714b5740f977
+Successfully built suss
+Installing collected packages: suss
+Attempting uninstall: suss
+Found existing installation: suss 0.0.1
+Uninstalling suss-0.0.1:
+Successfully uninstalled suss-0.0.1
+Successfully installed suss-0.0.1
+(venv) janetanjy@SUSSSSTDEPTNB01:/c/Users/janetanjy/Desktop/ilabguide$ python3
+Python 3.8.10 (default, Mar 13 2023, 10:26:41)
+[GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+from abc import ABC, abstractmethod
+class Customer(ABC):
+...     PREVAILING_INTEREST = 0.025
+...     def init(self, custid, name, loan):
+...         self._id = custid
+...         self._name = name
+...         self._loan = loan
+...
+...     @property
+...     def id(self):
+...         return self._id
+...
+...     @property
+...     def name(self):
+...         return self._name
+...
+...     @classmethod
+...     def getInterestRate(cls):
+...         return cls.PREVAILING_INTEREST
+...
+...     @abstractmethod
+...     def getCreditLimit(self):
+...         pass
+...
+...     @abstractmethod
+...     def getInterestOnLoan(self):
+...         pass
+...
+...     @property
+...     def loan(self):
+...         return self._loan
+...
+...     def str(self):
+...         return f'Id: {self._id} Name: {self._name:5} Loan: ${self._loan:5d}'
+...
+Customer.PREVAILING_INTEREST
+0.025
+Customer.loan()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: 'property' object is not callable
+Customer.loan
+<property object at 0x7fa7beb68ef0>
+Customer.loan(12)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: 'property' object is not callable
+Customer.setLoan(12)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: type object 'Customer' has no attribute 'setLoan'
+Customer.loan = 12
+Customer.loan
+12
+Customer.x
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: type object 'Customer' has no attribute 'x'
+Customer.x = 12
+Customer.x
+12
+Customer.bryan = 12321312
+Customer.bryan
+12321312
+from abc import ABC, abstractmethod
+class Customer(ABC):
+...     PREVAILING_INTEREST = 0.025
+...     def init(self, custid, name, loan):
+...         self._id = custid
+...         self._name = name
+...         self._loan = loan
+...
+...     @property
+...     def id(self):
+...         return self._id
+...
+...     @property
+...     def name(self):
+...         return self._name
+...
+...     @classmethod
+...     def getInterestRate(cls):
+...         return cls.PREVAILING_INTEREST
+...
+...     @abstractmethod
+...     def getCreditLimit(self):
+...         pass
+...
+...     @abstractmethod
+...     def getInterestOnLoan(self):
+...         pass
+...
+...     @property
+...     def loan(self):
+...         return self._loan
+...
+...     def str(self):
+...         return f'Id: {self._id} Name: {self._name:5} Loan: ${self._loan:5d}'
+...
+...
+...     def something():
+...         print("something")
+...
+dir(Customer)
+['PREVAILING_INTEREST', 'abstractmethods', 'class', 'delattr', 'dict', 'dir', 'doc', 'eq', 'format', 'ge', 'getattribute', 'gt', 'hash', 'init', 'init_subclass', 'le', 'lt', 'module', 'ne', 'new', 'reduce', 'reduce_ex', 'repr', 'setattr', 'sizeof', 'slots', 'str', 'subclasshook', 'weakref', '_abc_impl', 'getCreditLimit', 'getInterestOnLoan', 'getInterestRate', 'id', 'loan', 'name', 'something']
+Customer.something
+<function Customer.something at 0x7ff5fe4a99d0>
+Customer.loan
+<property object at 0x7ff5fe4be0e0>
+Customer.bryan
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+AttributeError: type object 'Customer' has no attribute 'bryan'
+type(Customer.loan)
+<class 'property'>
+type(Customer.something)
+<class 'function'>
+Customer.str
+<function Customer.str at 0x7ff5fe4a9940>
+Customer.id = 1000
+Customer.name = "bryan"
+Cusetomer.loan = "singapore"
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+NameError: name 'Cusetomer' is not defined
+Customer.loan = "singapore"
+Customer.str
+<function Customer.str at 0x7ff5fe4a9940>
+Customer.str()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: str() missing 1 required positional argument: 'self'
+Customer.str(Customer)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+File "<stdin>", line 33, in str
+AttributeError: type object 'Customer' has no attribute '_id'
+customer1 = Customer
+customer1 = Customer(123, 'Bryan', 1000)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: Can't instantiate abstract class Customer with abstract methods getCreditLimit, getInterestOnLoan
+customer1 = Customer
+customer1.id = 100
+customer1.name = "bryan"
+customer1.loan = 1000
+customer1.str()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+TypeError: str() missing 1 required positional argument: 'self'
+customer1.str(customer1)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+File "<stdin>", line 33, in str
+AttributeError: type object 'Customer' has no attribute '_id'

@@ -1,0 +1,162 @@
+>>> class Customer(ABC):
+...     PREVAILING_INTEREST = 0.025
+...     @staticmethod
+...     def checkId(custid):
+...             message=''
+...             if custid[0].upper() not in 'VC':
+...                     message += f'First character of customer id must be either V or C: {custid[0]}\n'
+...             if not custid[1:].isdigit():
+...                     message += f'Second character onwards must be a digit: {custid[1:]}\n'
+...             if message:
+...                     raise InvalidCustomerException(message)
+...     def checkLoan(self,loan):
+...             if loan > self.getCreditLimit():
+...                     raise VeryInvalidCustomerException\
+...                             (f'Loan amount ${loan} exceed credit limit: ${self.getCreditLimit()}', self)
+...     def __init__(self, custid, name, loan):
+...             Customer.checkId(custid)
+...             self._id = custid
+...             self._name = name
+...             self._loan = loan
+...             self.checkLoan(loan)
+...     @property
+...     def id(self):
+...             return self._id
+...     @property
+...     def name(self):
+...             return self._name
+...     @classmethod
+...     def getInterestRate(cls):
+...             return cls.PREVAILING_INTEREST
+...     @abstractmethod
+...     def getCreditLimit(self):
+...             pass
+...     @abstractmethod
+...     def getInterestOnLoan(self):
+...             pass
+...     @property
+...     def loan(self):
+...             return self._loan
+...     def __str__(self):
+...             return f'Id: {self._id} Name: {self._name} Loan: ${self._loan}'
+... 
+>>> c1 = Customer('123', 'john', 2800)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: Can't instantiate abstract class Customer with abstract methods getCreditLimit, getInterestOnLoan
+>>> c1 = Customer
+>>> Customer.loan = 100000
+>>> c1
+<class '__main__.Customer'>
+>>> print(c1)
+<class '__main__.Customer'>
+>>> c1.loan = 10000
+>>> print(c1)
+<class '__main__.Customer'>
+>>> print(c1.loan)
+10000
+>>> Customer.id = abc
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'abc' is not defined
+>>> Customer.id = 'abc'
+>>> Customer.checkId("dlkjfsjfds")0
+  File "<stdin>", line 1
+    Customer.checkId("dlkjfsjfds")0
+                                  ^
+SyntaxError: invalid syntax
+>>> Customer.checkId("dlkjfsjfds")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 11, in checkId
+__main__.InvalidCustomerException: First character of customer id must be either V or C: d
+Second character onwards must be a digit: lkjfsjfds
+
+>>> Customer.checkId("A")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 11, in checkId
+__main__.InvalidCustomerException: First character of customer id must be either V or C: A
+Second character onwards must be a digit: 
+
+>>> Customer.checkId("123")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 11, in checkId
+__main__.InvalidCustomerException: First character of customer id must be either V or C: 1
+
+>>> Customer.checkId("V123")
+>>> Customer.checkId("V3")
+>>> Customer.checkId("V")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 11, in checkId
+__main__.InvalidCustomerException: Second character onwards must be a digit: 
+
+>>> InvalidCustomerException
+<class '__main__.InvalidCustomerException'>
+>>> dir(InvalidCustomerException)
+['__cause__', '__class__', '__context__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__suppress_context__', '__traceback__', '__weakref__', 'args', 'with_traceback']
+>>> InvalidCustomerException.__class__
+<class 'type'>
+>>> type(InvalidCustomerException)
+<class 'type'>
+>>> InvalidCustomerException.__bases__
+(<class 'Exception'>,)
+>>> dir(InvalidCustomerException.__bases__)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'count', 'index']
+>>> InvalidCustomerException.__bases__.__str__
+<method-wrapper '__str__' of tuple object at 0x7f9378c64df0>
+>>> InvalidCustomerException.__bases__.__str__()
+"(<class 'Exception'>,)"
+>>> InvalidCustomerException.__bases__.__repr__()
+"(<class 'Exception'>,)"
+>>> CUstomer
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'CUstomer' is not defined
+>>> Customer
+<class '__main__.Customer'>
+>>> dir(Customer)
+['PREVAILING_INTEREST', '__abstractmethods__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', 'checkId', 'checkLoan', 'getCreditLimit', 'getInterestOnLoan', 'getInterestRate', 'id', 'loan', 'name']
+>>> Customer.checkId
+<function Customer.checkId at 0x7f9378ad8ee0>
+>>> Customer.checkId(123)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 6, in checkId
+TypeError: 'int' object is not subscriptable
+>>> Customer.checkId('123')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 11, in checkId
+__main__.InvalidCustomerException: First character of customer id must be either V or C: 1
+
+>>> Customer.checkId('Cat')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 11, in checkId
+__main__.InvalidCustomerException: Second character onwards must be a digit: at
+
+>>> Customer.__str__
+<function Customer.__str__ at 0x7f9378aadee0>
+>>> dir(Customer)
+['PREVAILING_INTEREST', '__abstractmethods__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', 'checkId', 'checkLoan', 'getCreditLimit', 'getInterestOnLoan', 'getInterestRate', 'id', 'loan', 'name']
+>>> Customer.__hash__
+<slot wrapper '__hash__' of 'object' objects>
+>>> Customer.__name__
+'Customer'
+>>> Customer.checkLoan(100000)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: checkLoan() missing 1 required positional argument: 'loan'
+>>> Customer.checkLoan(self, 100000)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'self' is not defined
+>>> Customer.checkLoan(Customer, 100000)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 13, in checkLoan
+TypeError: getCreditLimit() missing 1 required positional argument: 'self'
+>>> 

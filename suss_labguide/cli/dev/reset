@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Define the venv directory
+VENV_DIR="./venv"
+
+# Function to run the CLI setup
+run_cli_setup() {
+    SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    source "$SCRIPT_DIR/setup"
+}
+
+# Check if the venv directory exists
+if [ -d "$VENV_DIR" ]; then
+    echo "The virtual environment directory '$VENV_DIR' exists."
+
+    # Prompt the user for confirmation
+    read -p "Do you want to remove it? (y/n): " confirm
+
+    # Check the user's response
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+        echo "Removing the virtual environment directory..."
+        rm -rf "$VENV_DIR"
+        echo "The virtual environment directory has been removed."
+
+        # Run the CLI setup
+        run_cli_setup
+    else
+        echo ""
+    fi
+else
+    echo "The virtual environment directory '$VENV_DIR' does not exist."
+    run_cli_setup
+fi

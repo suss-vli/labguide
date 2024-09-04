@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Running server..."
+python -m http.server #pass in other options
+#include logging
+#include 

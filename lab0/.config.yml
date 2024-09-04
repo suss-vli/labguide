@@ -1,0 +1,23 @@
+course: lab0
+ai:
+  openai: xxxx-unsupported-yet-xxxx
+  claudeai: claudeaicontent
+  bingai: xxxx-unsupported-yet-xxxx
+  bard: xxxx-unsupported-yet-xxxx
+  morenest: 
+    furthernest: nestedcontent
+    secondnest: beehive
+
+# could be development, test or production
+env: development
+debug: true
+encrypt: true
+encrypt_key: 'DYRHtygQmdgD5jaZknxabWzJKKcubU2i_vVGnEWDktA='
+encrypt_marker: 'M68cXBCzKt9NqYvA3LpR25QlxyFV4T7JZDgsPkSfOWIijrE0bU1nwmhGuHo6adzv8kNl2iJpUqYmFStLCcUxS57X5Df4hvaGTRHJaVFTy3o1O4oG3nb6LsV1RJRgC4bTcZBtIywmZzv1qwGJR6e2yBfS4jufKXWVjwvhJZpBse5fDmBoj4Iovasf6AwQX7s7t1SfSoY3t8y0BueEtEaCE8Qk0xJjn0HqGvqwLirEjN1umM3bbktDeLHnUJWV9iQWXYDZKmlqyVvxfk3oBw7VJvhI9SSnJ74vypzYkgzPU4LSMx9s53K5MfOWHrR6S3Y6ZC9CQ3Rdjs5lJpRmPYcODa6SkWc9FfO'
+github_action: false
+suss_path: ./.encrypted_lab0_solution/
+friendly: false
+show_solution_list: [ ]
+
+# plugins:
+#   - hello.py

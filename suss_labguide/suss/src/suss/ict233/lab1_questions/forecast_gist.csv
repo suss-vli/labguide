@@ -1,0 +1,4 @@
+start,end,west,east,central,south,north
+2023-09-12T12:00:00+08:00,2023-09-12T18:00:00+08:00,Cloudy,Thundery Showers,Thundery Showers,Cloudy,Thundery Showers
+2023-09-12T18:00:00+08:00,2023-09-13T06:00:00+08:00,Partly Cloudy (Night),Partly Cloudy (Night),Partly Cloudy (Night),Partly Cloudy (Night),Partly Cloudy (Night)
+2023-09-13T06:00:00+08:00,2023-09-13T12:00:00+08:00,Partly Cloudy (Day),Partly Cloudy (Day),Partly Cloudy (Day),Partly Cloudy (Day),Partly Cloudy (Day)

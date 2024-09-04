@@ -1,0 +1,11 @@
+venv/
+.vscode/
+.ipynb_checkpoints
+out
+/*-receipt.txt
+__pycache__
+.pyc
+output.csv
+transaction.csv
+transaction.json
+transaction_without_result_column.csv

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check if requirements.txt exists
+if [ ! -f "requirements.txt" ]; then
+    # Create requirements.txt if it does not exist
+    echo "Creating requirements.txt as it does not exist."
+    touch requirements.txt
+fi
+
+# Append the first argument to requirements.txt
+if [ -n "$1" ]; then
+    echo -e "\n$1" >> requirements.txt
+    echo "Added '$1' to requirements.txt."
+else
+    echo "No argument provided. Please provide a package to append to requirements.txt."
+fi
+
+#create requirements if it does not exist
