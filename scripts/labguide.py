@@ -8,6 +8,7 @@ import subprocess
 
 app = typer.Typer()
 
+@app.command()
 def setup():
     # Get the path to the "lab0/" in your installed package
     package_dir = Path(__file__).parent.parent
