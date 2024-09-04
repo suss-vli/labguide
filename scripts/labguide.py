@@ -7,6 +7,7 @@ import subprocess
 
 app = typer.Typer()
 
+@app.command()
 def setup():
     # Get the path to the "folder/" in your installed package
     package_dir = Path(__file__).parent.parent
