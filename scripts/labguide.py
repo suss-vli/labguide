@@ -10,7 +10,7 @@ app = typer.Typer()
 
 @app.command()
 def setup():
-    # Get the path to the "lab0/" in your installed package
+    # Get the path to the "folder/" in your installed package
     package_dir = Path(__file__).parent.parent
     source_folder = package_dir / "lab0"
 
@@ -23,18 +23,10 @@ def setup():
     # Define the path for the destination folder
     dest_folder = destination / "lab0"
 
-    # Copy the entire "lab0/" directory into the new directory, including hidden files/folders
+    # Copy the entire "folder/" directory into the new directory
     if source_folder.exists() and source_folder.is_dir():
-        for item in os.listdir(source_folder):
-            src_item = source_folder / item
-            dest_item = dest_folder / item
-
-            if src_item.is_dir():
-                shutil.copytree(src_item, dest_item, dirs_exist_ok=True)
-            else:
-                dest_item.parent.mkdir(parents=True, exist_ok=True) 
-                shutil.copy2(src_item, dest_item)
-        print(f"Copied {source_folder} to {dest_folder}")
+        shutil.copytree(source_folder, dest_folder, dirs_exist_ok=True)
+        print(f"LabGuide setup is completed. You can find the labs in `labs/` folder and try lab0.")
     else:
         print(f"Source folder {source_folder} does not exist")
 
