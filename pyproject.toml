@@ -6,11 +6,13 @@ authors = ["Bryan Lim <bryanlimyt@suss.edu.sg>, Jane Tan <janetanjy@suss.edu.sg>
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "lab0" },
-    { include = "scripts" },
     { include = "src.cli" },
     { include = "src.suss" },
     { include = "src.learntools" }
+]
+include = [
+    { path = "lab0/*", format = "directory" },
+    { path = "scripts/*", format = "directory" }
 ]
 
 [tool.poetry.dependencies]
