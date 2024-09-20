@@ -52,4 +52,10 @@ labguide setup <course>
 ```
 3. Your labs are now ready for you!
 
-  
+
+### Credits
+
+A special shoutout to our amazing interns who have played a part in making LabGuide work:
+
+- Bryan Chew @bchewzy
+- Joey Tan @jeezusplays

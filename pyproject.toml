@@ -2,7 +2,8 @@
 name = "suss-labguide"
 version = "0.0.1"
 description = "Package that powers interactive, autogradable labguides"
-authors = ["Bryan Lim <bryanlimyt@suss.edu.sg>, Jane Tan <janetanjy@suss.edu.sg>"]
+authors = ["Bryan Lim <bryanlimyt@suss.edu.sg>, Jane Tan <janetanjy@suss.edu.sg>", "Brandon Voon <brandonvoonys@suss.edu.sg>"]
+credits ["Bryan Chew <@bchewzy>", "Joey Tan <@jeezusplays>"]
 license = "MIT"
 readme = "README.md"
 include = [
