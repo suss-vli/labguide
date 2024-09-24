@@ -26,7 +26,7 @@ Install LabGuide package
 pip install git+https://github.com/suss-vli/labguide.git
 ```
 
-### Setup after Installation
+### Initial Setup
 
 Create a folder to store all the labs. Navigate to that folder and run the setup command.
 ```
@@ -42,8 +42,6 @@ labguide setup
 The setup will create a `lab0/` folder in your current working directory, and includes `lab0.ipynb` for you to try out.
 
 ### Setup for Courses
-
-**<span style="color:red">IMPT!</span> You will be required to have permission and be authenticated before having access to the LabGuide of the courses.**
 
 1. Navigate to the lab folder.
 
