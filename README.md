@@ -9,6 +9,10 @@ LabGuide is an open-source, interactive self-learning and autograding lab. It us
 #### Credits
 Kaggle's learningtools https://github.com/Kaggle/learntools
 
+#### For sysadmin
+To set up `labguide` in a virtual environment, please read the [Sysadmin Guide](https://github.com/suss-vli/labguide/blob/main/sysadmin.md).
+
+
 ## Lab0
 
 Lab0 is provided in this open source LabGuide. The `lab0` contains the following files:
