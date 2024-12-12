@@ -14,8 +14,8 @@ To set up `labguide` in a virtual environment, please read the [Sysadmin Guide](
 
 #### Docs
 
-Read [Installation](/docs/installation.md) 
-Read [Plugins](/docs/plugins.md) documentation.
+- Read [Installation](/docs/installation.md) 
+- Read [Plugins](/docs/plugins.md) documentation.
 
 ## Credits
 
