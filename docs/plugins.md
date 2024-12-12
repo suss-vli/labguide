@@ -2,6 +2,11 @@
 
 Customize your labs to suit your teaching style and students' learning better! Create your own `labguide` plugin using Python and enable it just for your class.
 
+**There are 2 types of plugins:**
+
+- **labguide plugins**: These plugins run within the labguide and give added features in the labguides.
+- **runnable plugins**: These plugins run outside of labguide and provide additional assistance to build labguides.
+
 ### 1. Navigate to the Plugins Folder
 
 Your plugin scripts should reside in the `.plugins` folder within your course's directory.
