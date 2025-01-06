@@ -6,10 +6,11 @@ authors = ["Bryan Lim <bryanlimyt@suss.edu.sg>, Jane Tan <janetanjy@suss.edu.sg>
 credits = ["Bryan Chew <@bchewzy>", "Joey Tan <@jeezusplays>"]
 license = "MIT"
 readme = "README.md"
+
 include = [
-    "lab0/**/*",
-    "scripts/*",
-    ".plugins/*",
+    { path = "lab0/**/*", format = ["sdist", "wheel"] },
+    { path = "scripts/*", format = ["sdist", "wheel"] },
+    { path = ".plugins/*", format = ["sdist", "wheel"] }
 ]
 
 [tool.poetry.dependencies]
