@@ -89,7 +89,10 @@ def get(course: str):
     git_dir = course_folder / ".git"
     if git_dir.exists() and git_dir.is_dir():
         shutil.rmtree(git_dir)
-
+    # remove the .github directory
+    git_dir = course_folder / ".github"
+    if git_dir.exists() and git_dir.is_dir():
+        shutil.rmtree(git_dir)
     # Remove the .gitignore file
     gitignore_file = course_folder / ".gitignore"
     if gitignore_file.exists() and gitignore_file.is_file():
