@@ -1,0 +1,83 @@
+name: Encrypt hints and solutions
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/.unencrypted_**_solution/**"
+
+jobs:
+  encrypt:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: Checkout (fetch last two commits) of the PR
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.after }}
+        fetch-depth: 2
+
+    - name: Process Changed Files
+      run: |
+        changedFiles=$(git diff --name-only HEAD^)
+        for file in $changedFiles; do
+          # Extract the directory part of the file path
+          dir=$(dirname "$file")
+          
+          # Use sed to extract the part before "_unencrypted"
+          solution_dir=$(echo "$dir" | sed -n 's/^\(.*\)\/\.unencrypted_\([^/]\+\)_solution\/.*/\1/p')
+          solution_name=$(echo "$dir" | sed -n 's/.*\.unencrypted_\([^/]\+\)_solution.*/\1/p')
+          
+          echo "solution_name=$solution_name" >> $GITHUB_ENV
+
+          if [ -n "$solution_dir" ]; then
+            echo "Processing file: $file"
+            echo "Solution Directory: $solution_dir"
+            echo "Solution Directory name: $solution_name"
+            # Do your processing here
+          fi
+      
+        done
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Checkout (clone suss-cli)
+      uses: actions/checkout@v3
+      with:
+        repository: suss-vli/suss-cli
+        ref: main
+        token: ${{ secrets.PAT }}
+        path: suss-cli
+      
+    - name: Install dependencies
+      working-directory: suss-cli
+      run: |
+        pip3 install -r requirements.txt
+
+    - name: Encrypt
+      run: |
+        echo "$solution_name"
+        unencrypted_name_solution="${{ env.solution_name }}/.unencrypted_${{ env.solution_name }}_solution"
+        if [ -d "$unencrypted_name_solution" ]; then
+          echo "Directory $unencrypted_name_solution exists."
+          # Run your ./suss encrypt_all command here
+          ./suss-cli/suss encrypt_all "$unencrypted_name_solution" --output "${{ env.solution_name }}/.encrypted_${{ env.solution_name }}_solution"
+          echo "Encrypt completed. Output folder: ${{ env.solution_name }}/.encrypted_${{ env.solution_name }}_solution"
+        else
+          echo "Directory $unencrypted_name_solution does not exist. Skipping encryption."
+        fi
+      
+    - name: Git commit and push
+      run: |
+        rm -rf suss-cli/
+        git remote -v
+        git status
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add .
+        git commit -m "Update .encrypted_${{ env.solution_name}}_solution"
+        git push origin HEAD:main
